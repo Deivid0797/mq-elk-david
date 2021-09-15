@@ -1,0 +1,14 @@
+MQ
+docker volume create qm1data
+docker run --name ibmmqq --env LICENSE=accept --env MQ_QMGR_NAME=QM1  --publish 1414:1414 --publish 9443:9443 --detach --volume qm1data:/mnt/mqm ibmcom/mq
+
+Reinicio de Servicio
+docker exec -ti b9a bash
+dspmqweb 
+endmqweb
+strmqweb
+
+
+ELK
+Carpeta "Logstash"
+Ejecutar en  docker compose
