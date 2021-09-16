@@ -21,6 +21,7 @@ services:
     image: logstash:7.14.1
     ports:
       - '10000:10000'
+      - '10001:10001'
     volumes:
       - type: bind
         source: ./logstash_pipeline/
