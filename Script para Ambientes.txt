@@ -2,6 +2,11 @@ MQ
 docker volume create qm1data
 docker run --name ibmmqq --env LICENSE=accept --env MQ_QMGR_NAME=QM1  --publish 1414:1414 --publish 9443:9443 --detach --volume qm1data:/mnt/mqm ibmcom/mq
 
+Crear las colas locales:
+- JMS.REQUEST
+- JMS.RESPONSE
+
+
 Reinicio de Servicio
 docker exec -ti b9a bash
 dspmqweb 
