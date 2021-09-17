@@ -25,9 +25,10 @@ public class JMSController {
 
     @PostMapping
     public ResponseEntity<String> createOrder(@RequestBody Request req) throws JMSException {
-        log.info("Mensaje '{}' enviado", req.getMessage());
+        //log.info("Mensaje '{}' enviado", req.getMessage());
 
-        MQQueue orderRequestQueue = new MQQueue("JMS.REQUEST");
+       // MQQueue orderRequestQueue = new MQQueue("JMS.REQUEST");
+        MQQueue orderRequestQueue = new MQQueue("JMS.RESPONSE");
 
         jmsTemplate.convertAndSend(orderRequestQueue, req.getMessage(), textMessage -> {
             textMessage.setJMSCorrelationID(req.getIdentifier());
