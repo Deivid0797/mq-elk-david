@@ -21,7 +21,7 @@ import javax.jms.TextMessage;
 @Component
 public class ResponseListener {
 
-    @JmsListener(destination = "JMS.RESPONSE")
+    @JmsListener(destination = "JMS.RESPONSE.ALIAS")
     public void receive(Message message) throws JMSException {
     	ConfigurationLogStash envio = new ConfigurationLogStash();
         TextMessage textMessage = (TextMessage) message;

@@ -28,7 +28,7 @@ public class JMSController {
         //log.info("Mensaje '{}' enviado", req.getMessage());
 
        // MQQueue orderRequestQueue = new MQQueue("JMS.REQUEST");
-        MQQueue orderRequestQueue = new MQQueue("JMS.RESPONSE");
+        MQQueue orderRequestQueue = new MQQueue("JMS.RESPONSE.ALIAS");
 
         jmsTemplate.convertAndSend(orderRequestQueue, req.getMessage(), textMessage -> {
             textMessage.setJMSCorrelationID(req.getIdentifier());
@@ -49,7 +49,7 @@ public class JMSController {
         try {
 	        final String mensajeUbicado = String.format("JMSCorrelationID='ID:%s'", convertedId);
 	        jmsTemplate.setReceiveTimeout(2000);
-	        final TextMessage jmsRespuesta = (TextMessage) jmsTemplate.receiveSelected("JMS.REQUEST", mensajeUbicado);
+	        final TextMessage jmsRespuesta = (TextMessage) jmsTemplate.receiveSelected("JMS.REQUEST.ALIAS", mensajeUbicado);
 	         response = Request.builder()
 	                .message(jmsRespuesta.getText())
 	                .identifier(correlationId)
