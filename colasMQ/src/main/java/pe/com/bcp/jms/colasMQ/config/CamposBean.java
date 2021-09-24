@@ -2,9 +2,9 @@ package pe.com.bcp.jms.colasMQ.config;
 
 public class CamposBean {
 	
-	private String tipoOperacion;
+	private String codigoEstado;
 	private String codEmpresa;
-	private String codOperacion;
+	private String tipoOperacion;
 	private String fechaHora;
 	private String canal;
 	private String numOperacion;
@@ -13,12 +13,6 @@ public class CamposBean {
 	}
 	public void setCodEmpresa(String codEmpresa) {
 		this.codEmpresa = codEmpresa;
-	}
-	public String getCodOperacion() {
-		return codOperacion;
-	}
-	public void setCodOperacion(String codOperacion) {
-		this.codOperacion = codOperacion;
 	}
 	public String getFechaHora() {
 		return fechaHora;
@@ -38,9 +32,19 @@ public class CamposBean {
 	public void setNumOperacion(String numOperacion) {
 		this.numOperacion = numOperacion;
 	}
+
+	public String getCodigoEstado() {
+		return codigoEstado;
+	}
+
+	public void setCodigoEstado(String codigoEstado) {
+		this.codigoEstado = codigoEstado;
+	}
+
 	public String getTipoOperacion() {
 		return tipoOperacion;
 	}
+
 	public void setTipoOperacion(String tipoOperacion) {
 		this.tipoOperacion = tipoOperacion;
 	}

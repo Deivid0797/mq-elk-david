@@ -42,7 +42,7 @@ public class ConfigurationLogStash {
 			//temporal
 			String tipo = cad.substring(0, 6);
 			cad = cad.substring(6, cad.length()-6);
-			bean.setTipoOperacion(tipo);
+			bean.setCodigoEstado(tipo);
 			
 			int tmp = 0;
 			int totCad=inicio;
@@ -54,7 +54,7 @@ public class ConfigurationLogStash {
 			
 			tmp = totCad; totCad = totCad+arr[1];
 		    ncad = cad.substring(tmp,totCad);
-		    bean.setCodOperacion(ncad.trim());
+		    bean.setTipoOperacion(ncad.trim());
 			
 			tmp = totCad; totCad = totCad+arr[2];
 		    ncad = cad.substring(tmp,totCad);
