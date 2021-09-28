@@ -28,12 +28,19 @@ public class JMSController {
         //log.info("Mensaje '{}' enviado", req.getMessage());
 
        // MQQueue orderRequestQueue = new MQQueue("JMS.REQUEST");
-        MQQueue orderRequestQueue = new MQQueue("JMS.RESPONSE.ALIAS");
+        /*MQQueue orderRequestQueue = new MQQueue("JMS.RESPONSE.ALIAS");
 
         jmsTemplate.convertAndSend(orderRequestQueue, req.getMessage(), textMessage -> {
             textMessage.setJMSCorrelationID(req.getIdentifier());
             return textMessage;
         });
+
+        return new ResponseEntity(req, HttpStatus.ACCEPTED);*/
+
+        log.info("Mensaje enviando");
+
+        MQQueue orderRequestQueue = new MQQueue("JMS.REQUEST");
+        jmsTemplate.convertAndSend(orderRequestQueue, req.toString());
 
         return new ResponseEntity(req, HttpStatus.ACCEPTED);
     }

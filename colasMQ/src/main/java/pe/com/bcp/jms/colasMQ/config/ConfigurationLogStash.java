@@ -1,5 +1,7 @@
 package pe.com.bcp.jms.colasMQ.config;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.io.BufferedOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -7,18 +9,17 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 public class ConfigurationLogStash {
 
 	public void conexion(String mensaje, int puerto) {
-		System.out.println("Entrado: "+mensaje);
+		log.info("Entrado: {}", mensaje);
 		
 		try {
 			Socket socket = new Socket("localhost", puerto);
 			DataOutputStream os = new DataOutputStream(new BufferedOutputStream(socket.getOutputStream()));
-			//os.writeBytes("{\"mensaje\": "+mensaje+" }");
 			os.writeBytes(mensaje);
 			os.flush();
-			//System.out.print("Enviado");
 			socket.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

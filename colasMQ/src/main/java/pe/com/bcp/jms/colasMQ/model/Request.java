@@ -8,4 +8,9 @@ import lombok.Data;
 public class Request<T> {
     private T message;
     private String identifier;
+
+    @Override
+    public String toString() {
+        return "{\"message\": \"" + message + "\", \"identifier\":\"" + identifier + "\"}";
+    }
 }
