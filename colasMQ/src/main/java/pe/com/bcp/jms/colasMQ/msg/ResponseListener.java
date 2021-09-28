@@ -27,7 +27,7 @@ public class ResponseListener {
     @Autowired
     private JmsTemplate jmsTemplate;
 
-    @JmsListener(destination = "JMS.RESPONSE.ALIAS")
+    @JmsListener(destination = "JMS.RESPONSE")
     public void receiveSendResponse(Message message) throws JMSException {
     	ConfigurationLogStash envio = new ConfigurationLogStash();
         TextMessage textMessage = (TextMessage) message;
