@@ -27,9 +27,9 @@ public class ResponseListener {
     @Autowired
     private JmsTemplate jmsTemplate;
 
-    @JmsListener(destination = "JMS.RESPONSE")
+    @JmsListener(destination = "JMS.RESPONSE.ALIAS")
     public void receiveSendResponse(Message message) throws JMSException {
-    	ConfigurationLogStash envio = new ConfigurationLogStash();
+    	/*ConfigurationLogStash envio = new ConfigurationLogStash();
         TextMessage textMessage = (TextMessage) message;
         
         String msg = textMessage.getText();
@@ -38,14 +38,16 @@ public class ResponseListener {
 		 Gson gson = builder.create();
 		CamposBean bean = envio.gestionaMsg(msg);
 		
-        envio.conexion(gson.toJson(bean),10000);
+        envio.conexion(gson.toJson(bean),10000);*/
         //log.info("Mensaje recibido---- : {} , ID: {}",
         //        textMessage.getText(), textMessage.getJMSCorrelationID());
+
+        log.info("Recibiendo mensaje COLA RESPONSE ALIAS : {}", message );
     }
 
     @JmsListener(destination = "JMS.REQUEST")
     public void receive(Message message) throws JMSException {
-        TextMessage textMessage = (TextMessage) message;
+        /*TextMessage textMessage = (TextMessage) message;
         String msg = textMessage.getText();
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
@@ -56,7 +58,8 @@ public class ResponseListener {
         jmsTemplate.convertAndSend("JMS.RESPONSE", request.getMessage(), textMessage2 -> {
             textMessage2.setJMSCorrelationID(request.getIdentifier());
             return textMessage2;
-        });
+        });*/
+        log.info("Recibiendo mensaje COLA REQUEST ALIAS : {}", message);
     }
     
 }
