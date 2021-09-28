@@ -45,7 +45,7 @@ public class ResponseListener {
         log.info("Recibiendo mensaje COLA RESPONSE ALIAS : {}", message );
     }
 
-    @JmsListener(destination = "JMS.REQUEST")
+    @JmsListener(destination = "JMS.REQUEST.ALIAS")
     public void receive(Message message) throws JMSException {
         /*TextMessage textMessage = (TextMessage) message;
         String msg = textMessage.getText();
