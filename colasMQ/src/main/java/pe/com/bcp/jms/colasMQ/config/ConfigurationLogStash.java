@@ -6,7 +6,10 @@ import java.io.BufferedOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Slf4j
@@ -29,7 +32,7 @@ public class ConfigurationLogStash {
 		
 	}
 	
-	public CamposBean gestionaMsg(String cad) {
+	public CamposBean gestionaMsg(String cad) throws ParseException {
 		CamposBean bean = new CamposBean();
 		int inicio = 427;
 		int[] arr = {15, 6, 14, 2, 8};
@@ -59,7 +62,9 @@ public class ConfigurationLogStash {
 			
 			tmp = totCad; totCad = totCad+arr[2];
 		    ncad = cad.substring(tmp,totCad);
-		    bean.setFechaHora(ncad.trim());
+			Date fechaProceso =new SimpleDateFormat("yyyyMMddHHmmss").parse(ncad.trim());
+			String fechaProcesoFormato = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(fechaProceso);
+		    bean.setFechaHora(fechaProcesoFormato);
 			
 			tmp = totCad; totCad = totCad+arr[3];
 		    ncad = cad.substring(tmp,totCad);

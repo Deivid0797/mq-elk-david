@@ -19,6 +19,7 @@ import pe.com.bcp.jms.colasMQ.model.Request;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.TextMessage;
+import java.text.ParseException;
 
 @Slf4j
 @Component
@@ -28,7 +29,7 @@ public class ResponseListener {
     private JmsTemplate jmsTemplate;
 
     @JmsListener(destination = "JMS.RESPONSE")
-    public void receiveSendResponse(Message message) throws JMSException {
+    public void receiveSendResponse(Message message) throws JMSException, ParseException {
     	ConfigurationLogStash envio = new ConfigurationLogStash();
         TextMessage textMessage = (TextMessage) message;
         
