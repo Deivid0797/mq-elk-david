@@ -37,10 +37,13 @@ public class JMSController {
 
         return new ResponseEntity(req, HttpStatus.ACCEPTED);*/
 
-        log.info("Mensaje enviando");
+        log.info("Enviando mensaje ... ");
 
         MQQueue orderRequestQueue = new MQQueue("JMS.REQUEST");
         jmsTemplate.convertAndSend(orderRequestQueue, req.toString());
+
+        MQQueue orderRequestQueue2 = new MQQueue("JMS.RESPONSE");
+        jmsTemplate.convertAndSend(orderRequestQueue2, req.toString());
 
         return new ResponseEntity(req, HttpStatus.ACCEPTED);
     }

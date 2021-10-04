@@ -78,7 +78,7 @@ public class WASController {
 				
 				//Envia a Kibana
 				ConfigurationLogStash envio = new ConfigurationLogStash();
-				envio.conexion(g.toJson(msg),10001);
+				envio.conexion(g.toJson(msg),10001, "Response");
 				
 				//envio.conexion(g.toJson(respuesta));
        

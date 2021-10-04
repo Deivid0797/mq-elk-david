@@ -15,8 +15,8 @@ import java.util.List;
 @Slf4j
 public class ConfigurationLogStash {
 
-	public void conexion(String mensaje, int puerto) {
-		log.info("Entrado: {}", mensaje);
+	public void conexion(String mensaje, int puerto, String type) {
+		log.info("Entrado: {}, - a {}", mensaje, type);
 		
 		try {
 			Socket socket = new Socket("localhost", puerto);
@@ -32,11 +32,10 @@ public class ConfigurationLogStash {
 		
 	}
 	
-	public CamposBean gestionaMsg(String cad) throws ParseException {
+	public CamposBean gestionaMsg(String cad, String type) throws ParseException {
 		CamposBean bean = new CamposBean();
 		int inicio = 427;
 		int[] arr = {15, 6, 14, 2, 8};
-		String[] campos = {"codEmpresa","codOperacion","fechaHora","canal","numOperacion"};
 		
 		if(cad.lastIndexOf("<Data>")>-1) {
 			int ini = cad.lastIndexOf("<Data>");
@@ -44,9 +43,11 @@ public class ConfigurationLogStash {
 			cad = cad.substring(ini+6, fin);
 			
 			//temporal
-			String tipo = cad.substring(0, 6);
-			cad = cad.substring(6, cad.length()-6);
-			bean.setCodigoEstado(tipo);
+			if(type.equals("RESPONSE")){
+				String tipo = cad.substring(0, 6);
+				cad = cad.substring(6, cad.length()-6);
+				bean.setCodigoEstado(tipo);
+			}
 			
 			int tmp = 0;
 			int totCad=inicio;
