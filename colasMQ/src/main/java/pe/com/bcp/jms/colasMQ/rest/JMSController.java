@@ -56,7 +56,7 @@ public class JMSController {
         try {
 	        final String mensajeUbicado = String.format("JMSCorrelationID='ID:%s'", convertedId);
 	        jmsTemplate.setReceiveTimeout(2000);
-	        final TextMessage jmsRespuesta = (TextMessage) jmsTemplate.receiveSelected("JMS.REQUEST.ALIAS", mensajeUbicado);
+	        final TextMessage jmsRespuesta = (TextMessage) jmsTemplate.receiveSelected("JMS.REQUEST", mensajeUbicado);
 	         response = Request.builder()
 	                .message(jmsRespuesta.getText())
 	                .identifier(correlationId)
