@@ -1,5 +1,7 @@
 package pe.com.bcp.jms.colasMQ.model;
 
+import java.util.Date;
+
 public class Mensaje<T> {
 	private String nombreInstancia;
 	private T datoLogs;
@@ -11,6 +13,8 @@ public class Mensaje<T> {
 	private String horaReinicio;
 	private String estadoFinal;
 	private String resultadoReinicio;
+	private Float disponibilidadInstancia;
+
 	public String getNombreInstancia() {
 		return nombreInstancia;
 	}
@@ -72,6 +76,12 @@ public class Mensaje<T> {
 	public void setResultadoReinicio(String resultadoReinicio) {
 		this.resultadoReinicio = resultadoReinicio;
 	}
-	
-	
+
+	public Float getDisponibilidadInstancia() {
+		return disponibilidadInstancia;
+	}
+
+	public void setDisponibilidadInstancia(Float disponibilidadInstancia) {
+		this.disponibilidadInstancia = disponibilidadInstancia;
+	}
 }

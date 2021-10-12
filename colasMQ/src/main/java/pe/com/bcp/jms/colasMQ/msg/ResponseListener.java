@@ -34,7 +34,9 @@ public class ResponseListener {
         String msg = textMessage.getText();
 
         String codEstado[] = {"CP0133", "CP0135", "CP0095", "CP0138", "CP0037", "CP0004", "CP0053", "CP0103",
-                              "CP0080", "CP0000", "CP0010", "CP0006", "CP0141", "CP0140", "CP0142", "CP0139" };
+                              "CP0080", "CP0000", "CP0010", "CP0006", "CP0141", "CP0140", "CP0142", "CP0139",
+                              "CP0000", "CP0000", "CP0000", "CP0000", "CP0000", "CP0000", "CP0000", "CP0000",
+                              "CP0000", "CP0000", "CP0000", "CP0000"};
         Random random = new Random();
         Integer posRandom = random.nextInt(codEstado.length);
         String nuevaCadena = insertString(msg, codEstado[posRandom], 18);

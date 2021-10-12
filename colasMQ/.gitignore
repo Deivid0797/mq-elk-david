@@ -2,3 +2,6 @@
 target
 mqjms.log.0
 mqjms.log.0.lck
+mqjms.log.0.1
+mqjms.log.0.1.lck
+mqjms.log.1
