@@ -19,7 +19,7 @@ public class ConfigurationLogStash {
 		log.info("Entrado: {}, - a {}", mensaje, type);
 		
 		try {
-			Socket socket = new Socket("13.92.1.176", puerto);
+			Socket socket = new Socket("localhost", puerto);
 			DataOutputStream os = new DataOutputStream(new BufferedOutputStream(socket.getOutputStream()));
 			os.writeBytes(mensaje);
 			os.flush();
